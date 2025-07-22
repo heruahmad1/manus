@@ -695,9 +695,8 @@
                 const trx = document.getElementById("totalTrx").innerText;
                 const grand = document.getElementById("grandTotal").innerText;
                 const refund = document.getElementById("refund").value;
-                
-                pesan += `
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                  pesan += `
+━━━━━━━━━━━━━━━━━━
 📊 *RINGKASAN:*`;
                 
                 if (refund && parseInt(refund) > 0) {
@@ -707,22 +706,19 @@
                 
                 pesan += `
 🧮 Total Item: ${trx}
-💰 **TOTAL PEMBAYARAN: ${grand}**
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 *TOTAL PEMBAYARAN: ${grand}*
+━━━━━━━━━━━━━━━━━━
 💳 *METODE PEMBAYARAN:*
 
-🏦 **SEABANK:** 901516847602
-📱 **DANA:** 082236625627
-👤 **A.N:** AHMAD KHAIRUDIN
+🏦 *SEABANK:* 901516847602
+📱 *DANA:* 082236625627
+👤 *A.N:* AHMAD KHAIRUDIN
 
-📱 **QRIS:** rebrand.ly/QRIS-HR
+📱 *QRIS:* rebrand.ly/QRIS-HR
+━━━━━━━━━━━━━━━━━━
+🙏 Terima kasih telah berbelanja di HR Store!`;
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🙏 Terima kasih telah berbelanja di HR Store!
-📞 Hubungi kami jika ada pertanyaan.`;
-
-                const url = "https://wa.me/?text=" + encodeURIComponent(pesan);
+                const url = "intent://send/?text=" + encodeURIComponent(pesan) + "#Intent;scheme=whatsapp;package=com.whatsapp.w4b;end;";
                 window.open(url, "_blank");
                 
                 btn.classList.remove('loading');
