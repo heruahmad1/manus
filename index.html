@@ -110,7 +110,7 @@
             font-weight: 400;
         }
 
-        .date-display {
+    .date-display {
             background: linear-gradient(135deg, var(--success-color), #22c55e);
             color: white;
             padding: 12px 24px;
@@ -479,14 +479,13 @@
             <i class="fas fa-calendar-alt"></i>
             <span id="tanggal">Loading...</span>
         </div>
-
         <div class="table-container">
             <table>
                 <thead>
                     <tr>
                         <th><i class="fas fa-box"></i> Produk</th>
                         <th><i class="fas fa-sort-numeric-up"></i> Jumlah</th>
-                        <th><i class="fas fa-tag"></i> Harga (Ribu)</th>
+                        <th><i class="fas fa-tag"></i> Harga</th>
                         <th><i class="fas fa-calculator"></i> Subtotal</th>
                     </tr>
                 </thead>
@@ -538,7 +537,7 @@
                     <tr>
                         <td colspan="3">
                             <i class="fas fa-undo"></i>
-                            REFUND / SALDO (Ribu)
+                            REFUND / SALDO
                         </td>
                         <td>
                             <input type="number" id="refund" min="0" oninput="hitung()" placeholder="0"/>
@@ -636,20 +635,8 @@
                 addHighlight(document.getElementById("grandTotal"));
             }
         }
-
-        function resetForm() {
-            const inputs = document.querySelectorAll("input");
-            inputs.forEach(input => {
-                input.value = "";
-            });
-            hitung();
             
             // Add shake animation to container
-            document.querySelector('.container').classList.add('shake');
-            setTimeout(() => {
-                document.querySelector('.container').classList.remove('shake');
-            }, 500);
-        }
 
         function kirimWhatsApp() {
             const btn = event.target;
@@ -662,8 +649,7 @@
                 
                 let pesan = `🏪 *HR STORE - REKAPAN TRANSAKSI*
 📅 Tanggal: ${tanggal}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+━━━━━━━━━━━━━━━━━━
 🛍️ *DETAIL PEMBELIAN:*
 `;
 
@@ -695,8 +681,7 @@
                 const trx = document.getElementById("totalTrx").innerText;
                 const grand = document.getElementById("grandTotal").innerText;
                 const refund = document.getElementById("refund").value;
-                  pesan += `
-━━━━━━━━━━━━━━━━━━
+                  pesan += `━━━━━━━━━━━━━━━━━━
 📊 *RINGKASAN:*`;
                 
                 if (refund && parseInt(refund) > 0) {
