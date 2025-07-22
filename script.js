@@ -177,6 +177,33 @@ document.addEventListener('DOMContentLoaded', function() {
   const today = new Date().toISOString().split('T')[0];
   document.getElementById("tanggal").value = today;
   
+  // Tambahkan event listener khusus untuk input jumlah dan harga
+  const produkList = ["jumbo", "lite", "big", "mini", "custom1", "custom2", "custom3"];
+  
+  produkList.forEach(produk => {
+    // Event listener untuk input jumlah
+    const inputJumlah = document.getElementById(produk);
+    if (inputJumlah) {
+      inputJumlah.addEventListener('input', function() {
+        hitungSubtotal(produk);
+      });
+      inputJumlah.addEventListener('change', function() {
+        hitungSubtotal(produk);
+      });
+    }
+    
+    // Event listener untuk input harga
+    const inputHarga = document.getElementById(`harga-${produk}`);
+    if (inputHarga) {
+      inputHarga.addEventListener('input', function() {
+        hitungSubtotal(produk);
+      });
+      inputHarga.addEventListener('change', function() {
+        hitungSubtotal(produk);
+      });
+    }
+  });
+  
   // Auto-save setiap kali ada perubahan input
   const inputs = document.querySelectorAll('input');
   inputs.forEach(input => {
@@ -189,7 +216,6 @@ document.addEventListener('DOMContentLoaded', function() {
           produk: {}
         };
         
-        const produkList = ["jumbo", "lite", "big", "mini", "custom1", "custom2", "custom3"];
         produkList.forEach(p => {
           data.produk[p] = {
             jumlah: document.getElementById(p).value,
@@ -259,4 +285,3 @@ document.addEventListener('keydown', function(e) {
     kirimWhatsApp();
   }
 });
-
