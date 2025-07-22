@@ -160,11 +160,7 @@ function resetForm() {
 
 // Inisialisasi aplikasi saat halaman dimuat
 document.addEventListener('DOMContentLoaded', function() {
-  // Set tanggal hari ini sebagai default
-  const today = new Date().toISOString().split('T')[0];
-  const tanggalInput = document.getElementById("tanggal");
-  if (tanggalInput) tanggalInput.value = today;
-  
+
   // Setup event listeners untuk semua input
   setupEventListeners();
   
